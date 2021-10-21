@@ -1,0 +1,626 @@
+{
+	"info": {
+		"_postman_id": "b4ba8a27-5e2a-4219-aeac-f1007c83c074",
+		"name": "Grope _21",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "EP_1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/get_method?name=Hanna&age=28",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"get_method"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Hanna"
+						},
+						{
+							"key": "age",
+							"value": "28"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EP_2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Hanna",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "19",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "3000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EP_3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/object_info_1?name=Hanna&age=28&weight=55",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"object_info_1"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Hanna"
+						},
+						{
+							"key": "age",
+							"value": "28"
+						},
+						{
+							"key": "weight",
+							"value": "55"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EP_4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/object_info_2?name=Hanna&age=28&salary=3000",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"object_info_2"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Hanna"
+						},
+						{
+							"key": "age",
+							"value": "28"
+						},
+						{
+							"key": "salary",
+							"value": "3000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EP_5",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/object_info_3?name=Hanna&age=28&salary=3000",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"object_info_3"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Hanna"
+						},
+						{
+							"key": "age",
+							"value": "28"
+						},
+						{
+							"key": "salary",
+							"value": "3000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EP_6",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/object_info_4?name=Hanna&age=28&salary=3000",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"object_info_4"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Hanna"
+						},
+						{
+							"key": "age",
+							"value": "28"
+						},
+						{
+							"key": "salary",
+							"value": "3000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EP_7",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Hanna",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "28",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "3000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3_New_Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"JSON\", function () {\r",
+							"var serverData = JSON.parse(responseBody);\r",
+							"var JSONtoCompare = {}; //set your predefined JSON here;\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"const salary = Number(pm.environment.get(\"base_salary\"));\r",
+							"\r",
+							"pm.test(\"Check salary first\", function () {\r",
+							"    pm.expect(response.salary[0]).to.eql(salary);\r",
+							"});\r",
+							"pm.test(\"Check salary second\", function () {\r",
+							"    pm.expect(+response.salary[1]).to.eql(salary * 2);\r",
+							"});\r",
+							"pm.test(\"Check salary third\", function () {\r",
+							"    pm.expect(+response.salary[2]).to.eql(salary * 3);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check second of array > first of array, > zero of array\", function () { \r",
+							"   pm.expect(+response.salary[2] > +response.salary[1] &&\r",
+							"   +response.salary[2] > response.salary[0]\r",
+							"    ).to.eql(true) });\r",
+							"\r",
+							" pm.test(\"Check second of array > zero of array\", function () { \r",
+							"    pm.expect(+response.salary[2]).to.be.above(+response.salary[0])\r",
+							"     });\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "28",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Hanna",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "{{base_salary}}",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/new_data",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"new_data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2_user_info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const response = pm.response.json();\r",
+							"const salary = Number(pm.environment.get(\"base_salary\"));\r",
+							"\r",
+							"pm.test(\"Check salary after 6 months\", function () {\r",
+							"    pm.expect(response.qa_salary_after_6_months).to.eql(salary * 2);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check salary after 12 months\", function () {\r",
+							"    pm.expect(response.qa_salary_after_12_months).to.eql(salary * 2.9);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Salary should be equal to start salary\", function () {\r",
+							"    pm.expect(response.start_qa_salary).to.eql(salary);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"JSON\", function () {\r",
+							"var serverData = JSON.parse(responseBody);\r",
+							"var JSONtoCompare = {}; //set your predefined JSON here;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"u_salary_1_5_year\", response.person.u_salary_1_5_year)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"age\": 28,\r\n\"salary\": {{base_salary}},\r\n\"name\": \"Hanna\",\r\n\"auth_token\": \"{{token}}\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{url}}/user_info",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5_get_test_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"JSON\", function () {\r",
+							"var serverData = JSON.parse(responseBody);\r",
+							"var JSONtoCompare = {}; //set your predefined JSON here;\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"const name = (pm.environment.get(\"name\"));\r",
+							"pm.test(\"Check resp.name to eql env.name\", function () {\r",
+							"    pm.expect(response.name).to.eql(name);\r",
+							"});\r",
+							"\r",
+							"const age = (pm.environment.get(\"age\"));\r",
+							"pm.test(\"Check resp.age to eql env.age\", function () {\r",
+							"    pm.expect(response.age).to.eql(age);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "salary",
+							"value": "{{u_salary_1_5_year}}",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "{{age}}",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/get_test_user",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"get_test_user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4_test_per_info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"JSON\", function () {\r",
+							"var serverData = JSON.parse(responseBody);\r",
+							"var JSONtoCompare = {}; //set your predefined JSON here;\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"const weight = (pm.environment.get(\"weight\"));\r",
+							"\r",
+							"pm.test(\"Check cof of daily_food\", function () {\r",
+							"    pm.expect(response.daily_food).to.eql(weight * 0.012);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check cof of daily_sleep\", function () {\r",
+							"    pm.expect(response.daily_sleep).to.eql(weight * 2.5);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "28",
+							"type": "text"
+						},
+						{
+							"key": "weight",
+							"value": "{{weight}}",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Hanna",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/test_pet_info",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"test_pet_info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6_currency",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const num = pm.variables.replaceIn('{{$randomInt}}');\r",
+							"pm.environment.set(\"Cur_ID\", num);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/currency",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"currency"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7_curr_byn",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						},
+						{
+							"key": "curr_code",
+							"value": "{{Cur_ID}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/curr_byn",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"curr_byn"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {",
+					"    console.log(response.json());",
+					"});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
